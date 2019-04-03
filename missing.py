@@ -11,14 +11,13 @@ def missing_number(nums, max_num):
     8
     
     """
-    #make a set with range of nums to max num
-    #check list and see if each num is in set
-    #return the num in set that is not in list]
+    inclusive = set(nums)
 
-    for num in range(1,max_num): 
-        if num not in nums:
+    for num in range(1,max_num):
+        if num not in inclusive:
             return num 
-            
+
+
 if __name__ == '__main__':
     import doctest
     if doctest.testmod().failed == 0:
