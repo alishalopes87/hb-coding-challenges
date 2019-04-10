@@ -15,12 +15,34 @@ class LinkedList(object):
 
     def __init__(self):
         self.head = None
+        self.tail = None 
+
 
     def add(self, item):
         temp = Node(item)
         temp.next = self.head
         self.head = temp 
+        if self.tail == None:
+            self.tail = temp 
 
+    def append(self, item):
+        temp = Node(item)
+        if self.tail == None:
+            self.tail = temp
+            self.tail.next = None
+        else:
+            self.tail.next = temp 
+            temp.next = None 
+            self.tail = temp 
+
+        if self.head == None:
+            self.head = temp 
+
+    def pprint(self):
+        current = self.head
+        while current:
+            print(current.data)
+            current = current.next
 
 class Node(object):
     """Node in a linked list."""
@@ -41,6 +63,7 @@ ll2.add(5)
 ll2.add(6)
 ll2.add(4)
 
+
 def addTwoNumbers(ll1, ll2):
     result = LinkedList()
 
@@ -49,13 +72,20 @@ def addTwoNumbers(ll1, ll2):
 
     while current1 and current2:
         item = current1.data + current2.data 
-        result.add(item)
+        if item > 9:
+            str_item = str(item)
+            last_item = int(str_item[-1])
+            result.append(last_item)
+
+            start_item = int(str_item[:-1])
+            current2.next.data = current2.next.data + start_item
+
+        else:
+            result.append(item)
         current1 = current1.next
         current2 = current2.next 
 
-    current = result.head
-    while current:
-        print(current.data)
-        current = current.next
+    return result
+
      
-print(addTwoNumbers(ll1,ll2))
+addTwoNumbers(ll1,ll2).pprint()
