@@ -15,10 +15,9 @@
 
 def product_exluding(lst, index):
 	product = 1
-	lst.pop(index)
-
 	for num in range(len(lst)):
-		product = product * num 
+		if num != index:
+			product = product * num 
 	return product
 
 def product_array(lst):
@@ -26,6 +25,7 @@ def product_array(lst):
 	product_array = []
 	for num in range(len(lst)):
 		product = product_exluding(lst, num)
+		print(product)
 		product_array.append(product)
 
 	return product_array
