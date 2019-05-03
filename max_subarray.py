@@ -21,15 +21,14 @@
 #return max_sum
 
 def max_subarray(nums):
-	max_sum = 0
-	current_sum = 0
-	index = 0
+	max_sum = nums[0]
+	current_sum = nums[0]
 
-	for num in range(len(nums)):
-		current_sum += nums[num]
+	for num in nums[1:]:
+		print(current_sum, nums[num], max_sum)
+		current_sum = max(current_sum + nums[num], nums[num])
 		if current_sum > max_sum:
 			max_sum = current_sum
-			current_sum = 0
 	return max_sum
 
 print(max_subarray([-2,1,-3,4,-1,2,1,-5,4]))
