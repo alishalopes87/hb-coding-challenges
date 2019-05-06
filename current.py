@@ -41,33 +41,39 @@
 #             #update value of current
 #             count = 1
 #             #reset count to 1
-def findLongestRepeatedLetters(lines):
-    lines_list = lines.split(" ")
-    result = []
-
-    # max_count = lines [0]
+def findLongestRepeatedLetters(string):
+    """
+    Args:
+        string: str.
+    Returns:
+        tuple. (str, int)
+    """
+    current = string[0]
     count = 0
-    for substring in range(len(lines_list)):
-        print(lines_list[substring])
-        current = lines_list[substring][0]
-        print(current)
-        for char in range(1,len(lines_list[substring])):
-            print(lines_list[substring][char])
-            if current == lines_list[substring][char]:
-                print("this is current:",current, "this is next",lines_list[substring][char])
-                count += 1
-                print(count)
-            else:
-                if count >= 1:
-                    result.append((current,count))
-                    current = lines_list[substring][char]
-                    print(current)
-                    count = 0
-    for values in result:
-        print("{} {}".format(values[0],values[1]))
+    # tup_list[i] -> (str, int count)
+    tup_list = []
+    # populate tup_list
+    for char in string[1:]:
+        if current == char:
+            count += 1 
+        else:
+            tup_list.append((current, count))
+            count = 0
+
+    # compute max of tup_list
+    #max_item = compute_max(tup_list)
+
+    best_i = 0
+    max_count = tup_list[0][1]
+    for i in range(len(tup_list)):
+        if tup_list[i][1] > max_count:
+            max_count = tup_list[i][1]
+            best_i = i
+    
+    return "{} {}".format(tup_list[best_i][0],tup_list[best_i][1])
     
 
-findLongestRepeatedLetters("RIGAMAROLE CONSTRUCTIVE ASSIDUOUSLY")
+print(findLongestRepeatedLetters("RIGAMAROLE CONSTRUCTIVE ASSIDUOUSLY"))
 
 
 
