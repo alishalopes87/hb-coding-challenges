@@ -50,10 +50,21 @@ def two_sum_dict(lst, target):
 			values_to_indices[lst[num]] = num
 
 
+def find_two_num_sum(lst, total):
+   diffs = set()
+   for num in lst:
+       if num in diffs:
+           return [total-num, num]
+       else:
+           diffs.add(total-num)
+   return None
 
-print(two_sum_dict([7,11,15,2],9))
-print(two_sum_dict([-5,5],0))
-print(two_sum_dict([-6,-6],-12))
+print(find_two_num_sum([7,11,15,2],9))
+print(find_two_num_sum([-5,5],0))
+print(find_two_num_sum([-6,-6],-12))
+# print(two_sum_dict([7,11,15,2],9))
+# print(two_sum_dict([-5,5],0))
+# print(two_sum_dict([-6,-6],-12))
 
 
 
