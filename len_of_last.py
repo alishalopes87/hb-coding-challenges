@@ -20,18 +20,15 @@ def len_of_last(s):
 		output: int
 	"""
 
-	count = 0
-	local_count = 0
+	s_list = s.split(" ")
+	length = 0
 
-	for i in range(len(s)):
-		if s[i] == ' ':
-			local_count = 0
-		else:
-			local_count += 1
-			count = local_count
-	return count
+	for item in s_list:
+		if item:
+			length = len(item)
+	return length
 
-print(len_of_last("Hello World"))
-print(len_of_last("a "))
-print(len_of_last(""))
-print(len_of_last(" "))
+
+	
+
+print(len_of_last(" this   "))
