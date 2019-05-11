@@ -25,10 +25,7 @@ function upToKDifferences(str,k){
 	const result = []
 
 	for(i=0; i < str.length; i++){
-		console.log(str[i])
 		if( substring.includes(str[i])){
-			console.log("current substring", substring)
-			console.log(count)
 			count = count + 1
 			if(count >= k){
 				result.push(substring)
@@ -41,6 +38,6 @@ function upToKDifferences(str,k){
 		}
 	}
 	result.push(substring)
-	return result
+	return result.length
 }
 console.log(upToKDifferences("aabeefegeeccrr",3))
